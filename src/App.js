@@ -1,24 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
+import { Line } from 'react-chartjs-2';
+import LineChart from './LineChart';
+
+const data = {
+  labels: ['Jan', 'Mar', 'May', 'July', 'Oct'],
+  datasets: [
+    {
+      label: 'Iphone sales',
+      data: [400, 1000, 4000, 800, 1500],
+      fill: true,
+      backgroundColor: "#2e4355",
+      pointBorderColor: "#8884d8",
+      pointBorderWidth: 5,
+      pointRadius: 8,
+      tension: 0.4
+    },
+  ],
+};
+
+const options = {
+  plugins: { legend: { display: false } },
+  layout: { padding: { bottom: 100 } },
+  scales: {
+    y: {
+      ticks: {
+        color: "white",
+        font: {
+          size: 18
+        }
+      },
+      grid: {
+        color: "#243240"
+      }
+    },
+    x: {
+      ticks: {
+        color: "white",
+        font: {
+          size: 18
+        }
+      }
+    }
+  },
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <div className="App">
+        <h2>Quarterly sales for mobile phones</h2>
+        <Line data={data} options={options} />
+      </div> */}
+      <div>
+        <LineChart />
+      </div>
+    </>
   );
 }
 
